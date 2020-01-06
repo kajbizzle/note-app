@@ -27,16 +27,22 @@ getNotes = () => {
   .catch((err) => console.log(err.response.data) );
 }
 
-  render() {
-    const { showNote } = this.state;
+render() {
+  const { showNote, notes } = this.state;
 
-    return (
-      <div className="App">
-        <Nav toggleNote={this.toggleNote} showNote={showNote} />
-        { showNote ? <Note /> : <List getNotes={this.getNotes}/> }
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Nav toggleNote={this.toggleNote} showNote={showNote} />
+      {showNote ?
+        <Note />
+        :
+        <List
+          getNotes={this.getNotes}
+          notes={notes}
+        />
+      }
+    </div>
+  );
 }
 
 export default App;
