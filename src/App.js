@@ -10,7 +10,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      showNote: false
+      showNote: false,
+      notes: []
     };
   }
 
@@ -22,7 +23,7 @@ toggleNote = () => {
 
 getNotes = () => {
   axios.get(urlFor('notes'))
-  .then((res) => console.log(res.data) )
+  .then((res) => this.setState({ notes: res.data }) )
   .catch((err) => console.log(err.response.data) );
 }
 
