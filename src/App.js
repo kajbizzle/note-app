@@ -35,7 +35,9 @@ getNote = (id) => {
 }
 
 submitNote = (data) => {
-  console.log(data);
+  axios.post(urlFor('notes'), data)
+  .then((res) => this.setState({ showNote: false }) )
+  .catch((err) => console.log(err.response.data) );
 }
 
   render() {
